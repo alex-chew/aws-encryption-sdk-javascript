@@ -111,6 +111,7 @@
     "husky": "^4.2.5",
     "istanbul-instrumenter-loader": "^3.0.1",
     "karma": "^5.0.2",
+    "karma-browserstack-launcher": "^1.5.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^2.1.1",

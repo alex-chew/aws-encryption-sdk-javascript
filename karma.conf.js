@@ -18,7 +18,16 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      'modules/*-browser/test/**/*.ts',
+      // 'modules/*-browser/test/**/*.ts',
+
+      // 'modules/caching-materials-manager-browser/test/**/*.ts',
+      // 'modules/decrypt-browser/test/**/*.ts',
+      // 'modules/encrypt-browser/test/**/*.ts',
+      // 'modules/example-browser/test/**/*.ts',
+      // 'modules/kms-keyring-browser/test/**/*.ts',
+      // 'modules/material-management-browser/test/**/*.ts',
+      // 'modules/raw-aes-keyring-browser/test/**/*.ts',
+      // 'modules/raw-rsa-keyring-browser/test/**/*.ts',
       'modules/web-crypto-backend/test/**/*.ts',
     ],
     preprocessors: {
@@ -80,22 +89,37 @@ module.exports = function (config) {
       'karma-chai',
       'karma-webpack',
       'karma-coverage-istanbul-reporter',
-      'karma-json-fixtures-preprocessor'
+      'karma-json-fixtures-preprocessor',
+      'karma-browserstack-launcher'
     ],
     reporters: ['progress', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['ChromeHeadlessDisableCors'],
+    // browsers: ['ChromeHeadlessDisableCors'],
+    browsers: ['bs_test'],
     customLaunchers: {
       ChromeHeadlessDisableCors: {
         base: 'ChromeHeadless',
         flags: ['--disable-web-security', '--no-sandbox']
+      },
+      bs_test: {
+        base: 'BrowserStack',
+        browser: 'Firefox',
+        browser_version: '75.0',
+        os: 'OS X',
+        os_version: 'Catalina'
       }
     },
     singleRun: true,
-    concurrency: Infinity,
-    exclude: ['**/*.d.ts']
+    concurrency: 3,
+    exclude: ['**/*.d.ts'],
+    browserStack: {
+      // BrowserStack worker timeout, default 300.
+      timeout: 60,
+      retryLimit: 3,
+    },
+    browserDisconnectTimeout: 5000,
   })
 }

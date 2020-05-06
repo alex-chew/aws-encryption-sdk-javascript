@@ -20,6 +20,10 @@ package.json.decrypt
 .karma_output
 coverage
 
+# karma/browserstack output
+browserstack.err
+local.log
+
 # symlink to test vectors
 /modules/integration-node/fixtures
 /modules/integration-browser/fixtures
